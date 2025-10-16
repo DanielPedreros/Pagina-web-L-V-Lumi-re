@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>L&V Lumière — Identidad</title>
+
+  <!-- Tipografía -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg: #fbfaf7;
+      --accent: #7ea9ad; /* tono azul suave */
+      --text: #213033;
+      --muted: #6b7777;
+      --card: rgba(255,255,255,0.6);
+      --radius: 14px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg,var(--bg),#ffffff);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.5;
+    }
+
+    /* Top nav */
+    .nav{
+      position:sticky;
+      top:0;
+      backdrop-filter: blur(6px);
+      background: rgba(251,250,247,0.7);
+      border-bottom:1px solid rgba(34,50,50,0.04);
+      z-index:40;
+    }
+    .nav-inner{
+      max-width:980px;
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      gap:20px;
+      padding:12px 20px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      text-decoration:none;
+      color:var(--text);
+    }
+    .brand img{
+      height:44px;
+      width:auto;
+      display:block;
+    }
+    .brand h1{
+      margin:0;
+      font-family:"Playfair Display";
+      font-weight:600;
+      font-size:18px;
+      letter-spacing:1px;
+      color:var(--text);
+    }
+
+    .menu{
+      margin-left:auto;
+      display:flex;
+      gap:12px;
+      align-items:center;
+    }
+    .menu a{
+      text-decoration:none;
+      color:var(--muted);
+      font-weight:600;
+      padding:8px 12px;
+      border-radius:10px;
+      transition: all .18s ease;
+      font-size:14px;
+    }
+    .menu a:hover{ color:var(--accent); transform:translateY(-2px) }
+
+    /* Hero */
+    .container{
+      max-width:980px;
+      margin:28px auto;
+      padding:22px;
+    }
+    .hero{
+      display:grid;
+      grid-template-columns: 1fr 360px;
+      gap:28px;
+      align-items:center;
+      margin-bottom:28px;
+    }
+    .hero-card{
+      background:var(--card);
+      border-radius:var(--radius);
+      padding:26px;
+      box-shadow: 0 8px 30px rgba(32,40,40,0.04);
+      transition: transform .5s cubic-bezier(.2,.9,.3,1);
+    }
+    .hero-card:hover{ transform: translateY(-6px) }
+    .hero h2{
+      margin:0 0 8px 0;
+      font-family:"Playfair Display";
+      font-size:28px;
+      color:var(--text);
+    }
+    .hero p.lead{
+      margin:0 0 12px 0;
+      color:var(--muted);
+      font-size:15px;
+    }
+
+    /* small info card (right) */
+    .info{
+      text-align:center;
+      padding:18px;
+      border-radius:12px;
+      background:linear-gradient(180deg,rgba(126,169,173,0.06),rgba(126,169,173,0.02));
+      border:1px solid rgba(126,169,173,0.08);
+    }
+    .info h3{ margin:6px 0; font-family:"Playfair Display"; color:var(--accent) }
+    .info p{ margin:6px 0; color:var(--muted); font-size:14px }
+
+    /* Sections */
+    section{
+      margin:18px 0;
+      padding:20px;
+      border-radius:12px;
+      background:rgba(255,255,255,0.9);
+      box-shadow: 0 6px 20px rgba(20,30,30,0.03);
+      overflow:hidden;
+    }
+    .section-grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:20px;
+    }
+    h3.section-title{
+      margin:0 0 12px 0;
+      font-family:"Playfair Display";
+      color:var(--text);
+    }
+    p{ color:var(--muted); margin:0 0 10px 0; font-size:15px }
+
+    /* list styles */
+    ul.obj{
+      padding-left:18px;
+      color:var(--muted);
+      margin:0;
+    }
+    ul.obj li{
+      margin:10px 0;
+    }
+
+    /* footer */
+    footer{
+      margin-top:24px;
+      padding:24px 12px;
+      text-align:center;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    /* small screens */
+    @media (max-width:880px){
+      .hero{ grid-template-columns: 1fr; }
+      .section-grid{ grid-template-columns: 1fr; }
+      .menu{ display:none; }
+      .brand h1{ font-size:16px }
+    }
+
+    /* smooth reveal animation */
+    .reveal{
+      opacity:0;
+      transform: translateY(8px);
+      transition: all .8s cubic-bezier(.2,.9,.3,1);
+    }
+    .reveal.visible{
+      opacity:1;
+      transform:none;
+    }
+
+    /* anchor offset for sticky nav */
+    .anchor{ scroll-margin-top:86px; }
+  </style>
+</head>
+<body>
+  <nav class="nav" role="navigation" aria-label="Navegación principal">
+    <div class="nav-inner">
+      <a class="brand" href="#inicio">
+        <!-- Asegúrate de subir tu logo con el nombre logo.png -->
+        <img src="logo.png" alt="L&V Lumière logo">
+        <h1>L&amp;V Lumière</h1>
+      </a>
+
+      <div class="menu" aria-hidden="false">
+        <a href="#inicio">Inicio</a>
+        <a href="#mision">Misión</a>
+        <a href="#vision">Visión</a>
+        <a href="#objetivo-general">Objetivo</a>
+        <a href="#objetivos-especificos">Objetivos</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+    <header id="inicio" class="hero">
+      <div class="hero-card reveal">
+        <h2>L&amp;V Lumière</h2>
+        <p class="lead">Fragancias únicas — Elegancia y sostenibilidad. Creamos experiencias olfativas que despiertan emociones y resaltan la personalidad.</p>
+        <p style="color:var(--muted);font-size:14px">Marca de perfumería minimalista, inspirada en exclusividad y responsabilidad ambiental.</p>
+      </div>
+
+      <aside class="info reveal" aria-hidden="false">
+        <h3>Identidad</h3>
+        <p>Elegancia · Exclusividad · Autenticidad</p>
+        <p style="margin-top:12px;font-size:13px">Diseños y aromas pensados para experiencias memorables.</p>
+      </aside>
+    </header>
+
+    <!-- Misión -->
+    <section id="mision" class="anchor reveal" aria-labelledby="mision-title">
+      <h3 id="mision-title" class="section-title">Misión</h3>
+      <p>
+        Crear y ofrecer fragancias únicas y de alta calidad que despierten emociones, resalten la personalidad de cada cliente y conviertan cada esencia en una experiencia memorable, con un compromiso de innovación, elegancia y sostenibilidad.
+      </p>
+    </section>
+
+    <!-- Visión -->
+    <section id="vision" class="anchor reveal" aria-labelledby="vision-title">
+      <h3 id="vision-title" class="section-title">Visión</h3>
+      <p>
+        Ser una marca de perfumería reconocida a nivel nacional e internacional por la exclusividad de sus aromas, su innovación en diseño y su compromiso con el medio ambiente, posicionándonos como sinónimo de sofisticación y autenticidad.
+      </p>
+    </section>
+
+    <!-- Objetivo general -->
+    <section id="objetivo-general" class="anchor reveal" aria-labelledby="og-title">
+      <h3 id="og-title" class="section-title">Objetivo general</h3>
+      <p>
+        Posicionarnos como una empresa de perfumería reconocida por la creación de fragancias exclusivas que evoquen emociones, ofreciendo productos de alta calidad y generando experiencias memorables para nuestros clientes.
+      </p>
+    </section>
+
+    <!-- Objetivos específicos -->
+    <section id="objetivos-especificos" class="anchor reveal" aria-labelledby="oe-title">
+      <h3 id="oe-title" class="section-title">Objetivos específicos</h3>
+
+      <div class="section-grid">
+        <div>
+          <ul class="obj">
+            <li><strong>1.</strong> Desarrollar una identidad de marca sólida que refleje elegancia, exclusividad y confianza en el mercado.</li>
+            <li><strong>2.</strong> Diseñar y lanzar colecciones de perfumes innovadoras que respondan a las tendencias y preferencias de los clientes.</li>
+            <li><strong>3.</strong> Implementar estrategias de marketing digital en redes sociales para aumentar la visibilidad y fidelizar a la marca.</li>
+            <li><strong>4.</strong> Ampliar los canales de distribución mediante ventas en línea, alianzas con boutiques y participación en ferias seleccionadas.</li>
+          </ul>
+        </div>
+
+        <div>
+          <ul class="obj">
+            <li><strong>5.</strong> Ofrecer una experiencia de compra diferenciada a través de empaques atractivos, personalización de fragancias y servicio al cliente de calidad.</li>
+            <li><strong>6.</strong> Promover la sostenibilidad utilizando materias primas responsables y envases ecoamigables para posicionarnos como una marca consciente.</li>
+            <li><strong>7.</strong> Realizar campañas de posicionamiento que asocien los perfumes con emociones, estilos de vida y autenticidad.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <footer class="reveal" role="contentinfo">
+      <div style="max-width:980px;margin:0 auto;padding:6px 12px;">
+        <p><strong>L&amp;V Lumière</strong> — Perfumería · Elegancia sostenible</p>
+        <p style="margin-top:6px;color:var(--muted)">© <span id="year"></span> L&amp;V Lumière</p>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    // fecha en footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // reveal simple (no librerías)
+    const reveals = document.querySelectorAll('.reveal');
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          // si quieres que aparezca una sola vez:
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach(r => obs.observe(r));
+
+    // smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', (ev) => {
+        ev.preventDefault();
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) target.scrollIntoView({behavior: 'smooth', block: 'start'});
+      });
+    });
+  </script>
+</body>
+</html>
